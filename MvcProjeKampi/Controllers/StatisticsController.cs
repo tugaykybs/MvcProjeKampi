@@ -17,22 +17,18 @@ namespace MvcProjeKampi.Controllers
         Context c = new Context();
         public ActionResult Index()
         {
-            //            1) Toplam kategori sayısı
-            //            2) Başlık tablosunda "yazılım" kategorisine ait başlık sayısı
-            //            3) Yazar adında 'a' harfi geçen yazar sayısı
-            //            4) En fazla başlığa sahip kategori adı
-            //            5) Kategori tablosunda durumu true olan kategoriler ile false olan kategoriler arasındaki sayısal fark
+           
 
-            var deger1 = c.Categories.Count().ToString();  //count==kaç adate var gibi
+            var deger1 = c.Categories.Count().ToString(); 
             ViewBag.d1 = deger1;
 
-            var deger2 = c.Headings.Where(x => x.CategoryID == 13).Count().ToString();  //where==ama demek
+            var deger2 = c.Headings.Where(x => x.CategoryID == 10).Count().ToString();  
             ViewBag.d2 = deger2;
 
             var deger3 = c.Writers.Where(x => x.WriterName.Contains("a")).ToList().Count();
             ViewBag.d3 = deger3;
 
-            var deger4 = c.Categories.Where(u => u.CategoryID == (c.Headings.GroupBy(x => x.CategoryID)).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault()).Select(k => k.CategoryName).FirstOrDefault();  //select=seçmene yarıyor, Key=seçtiğin alanı seç ve isimlendir.  , groupby=gruplama yapıyor, OrderByDescending=sirasına göre sıralama
+            var deger4 = c.Categories.Where(u => u.CategoryID == (c.Headings.GroupBy(x => x.CategoryID)).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault()).Select(k => k.CategoryName).FirstOrDefault();  
             ViewBag.d4 = deger4;
 
             int degertrue = c.Categories.Where(x => x.CategoryStatus == true).Count();
@@ -43,3 +39,9 @@ namespace MvcProjeKampi.Controllers
         }
     }
 }
+
+//count==kaç adate var gibi
+
+//where==ama demek
+
+//select=seçmene yarıyor, Key=seçtiğin alanı seç ve isimlendir.  , groupby=gruplama yapıyor, OrderByDescending=sirasına göre sıralama
