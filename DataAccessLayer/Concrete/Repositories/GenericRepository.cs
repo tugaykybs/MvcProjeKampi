@@ -41,12 +41,12 @@ namespace DataAccessLayer.Concrete.Repositories
 
         public List<T> List()
         {
-           return _object.ToList();
+           return _object.ToList();    //normal listeleme (hepsini getirir)
         }
 
         public List<T> List(Expression<Func<T, bool>> filter)
         {
-            return _object.Where(filter).ToList();
+            return _object.Where(filter).ToList();    //parametreli listeleme
         }
 
         public void Update(T p)

@@ -22,7 +22,7 @@ namespace MvcProjeKampi.Controllers
             var deger1 = c.Categories.Count().ToString(); 
             ViewBag.d1 = deger1;
 
-            var deger2 = c.Headings.Where(x => x.CategoryID == 10).Count().ToString();  
+            var deger2 = c.Headings.Where(x => x.CategoryID == 9).Count().ToString();  
             ViewBag.d2 = deger2;
 
             var deger3 = c.Writers.Where(x => x.WriterName.Contains("a")).ToList().Count();
